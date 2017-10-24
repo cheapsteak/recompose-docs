@@ -1,0 +1,16 @@
+{
+  "name": "recompose-docs",
+  "version": "1.0.0",
+  "description": "Generate recompose documentation into an html file",
+  "main": "index.js",
+  "author": "Chang Wang",
+  "license": "MIT",
+  "dependencies": {
+    "github-markdown-css": "^2.9.0",
+    "got": "^7.1.0",
+    "marked": "^0.3.6"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

@@ -6,9 +6,9 @@
   "author": "Chang Wang",
   "license": "MIT",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "github-markdown-css": "^2.9.0",
-    "got": "^7.1.0",
-    "marked": "^0.3.6"
+    "got": "^7.1.0"
   },
   "scripts": {
     "start": "node index.js"

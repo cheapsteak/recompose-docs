@@ -1,12 +1,33 @@
 const fs = require('fs');
 const path = require('path');
-const marked = require('marked');
 const got = require('got');
+const cheerio = require('cheerio');
 
 const githubMarkdownCSS = fs.readFileSync(path.join(__dirname, './node_modules/github-markdown-css/github-markdown.css'), 'utf8');
+const docUrl = 'https://github.com/acdlite/recompose/blob/master/docs/API.md';
 
-const docUrl = 'https://raw.githubusercontent.com/acdlite/recompose/master/docs/API.md';
 
-const getDocs = () => got(docUrl);
+(async () => {
+  const pageHtml = (await got(docUrl)).body;
+  const docsHtml = cheerio.load(pageHtml)('.markdown-body');
 
-getDocs().then(response => console.log(response))
+  const html = `
+  <!DOCTYPE html>
+  <html class=docs lang=en>
+    <head>
+      <meta charset=utf-8>
+      <style>
+        ${githubMarkdownCSS}
+        .markdown-body {
+          padding: 45px;
+        }
+      </style>
+    </head>
+    <body>
+      ${docsHtml}
+    </body>
+  </html>
+  `;
+
+  fs.writeFileSync('API.html', html, 'utf8');
+})();

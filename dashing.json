@@ -1,0 +1,9 @@
+{
+    "name": "Recompose",
+    "package": "recompose",
+    "index": "API.html",
+    "externalURL": "https://github.com/acdlite/recompose/blob/master/docs/API.md",
+    "selectors": {
+        "body > article > h3": "Command"
+    }
+}
